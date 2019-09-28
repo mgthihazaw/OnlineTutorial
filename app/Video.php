@@ -9,4 +9,7 @@ class Video extends Model
     public function series(){
         return $this->belongsTo(Series::class);
     }
+    public function getUrlAttribute(){
+        return route('series.episodes',$this->series,$this->episode_number);
+    }
 }
