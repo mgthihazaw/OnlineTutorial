@@ -9,7 +9,7 @@
         
       Your browser does not support the video tag.
       </video> --}}
-
+    <b-breadcrumb :items="{{ json_encode($breadCrumbs) }}"></b-breadcrumb>
     <video-player :next="{{ $nextVideoUrl }}" :video="{{ $video }}" ></video-player>
   </section>
   <section>

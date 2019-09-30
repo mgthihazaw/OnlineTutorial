@@ -90,6 +90,27 @@ class SeriesController extends Controller
        $nextVideo = $series->videos()->where('episode_number',$episodeNumber+1)->first();
 
        $nextVideoUrl = $nextVideo ?? null;
-        return view('froend.series.video')->withSeries($series)->withVideo($video)->withNextVideoUrl($nextVideoUrl);
+
+       $breadCrumbs = [
+           [
+               'text' => 'Browse',
+               'href' => route('series.index')
+           ],
+           [
+            'text' => $series->title,
+            'href' => route('series.show',$series->id)
+           ],
+           [
+            'text' => $video->title,
+            'active' => true
+           ],
+           
+
+           ];
+        return view('froend.series.video')
+               ->withSeries($series)
+               ->withVideo($video)
+               ->withNextVideoUrl($nextVideoUrl)
+               ->withBreadCrumbs($breadCrumbs);
     }
 }
