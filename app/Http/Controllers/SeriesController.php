@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Series;
+use App\Video;
 use Illuminate\Http\Request;
 
 class SeriesController extends Controller
@@ -82,5 +83,13 @@ class SeriesController extends Controller
     public function destroy(Series $series)
     {
         //
+    }
+    public function episode(Series $series,$episodeNumber){
+
+       $video = $series->videos()->where('episode_number',$episodeNumber)->first();
+       $nextVideo = $series->videos()->where('episode_number',$episodeNumber+1)->first();
+
+       $nextVideoUrl = $nextVideo ?? null;
+        return view('froend.series.video')->withSeries($series)->withVideo($video)->withNextVideoUrl($nextVideoUrl);
     }
 }

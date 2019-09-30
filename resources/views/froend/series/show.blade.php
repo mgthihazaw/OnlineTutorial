@@ -28,10 +28,11 @@
 
                         <!-- Page Heading -->
                         <h1 class="my-4">Episodes
-                          <small>20</small>
+                          <small>{{ $series->videos->count() }}</small>
                         </h1>
                         
-                        <episodes :videos="{{$series->videos}}"></episodes>
+                        
+                        <episodes :videos="{{ $series->videos }}"></episodes>
                   
                         
                   
