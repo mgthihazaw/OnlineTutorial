@@ -15,7 +15,7 @@ class SeriesController extends Controller
      */
     public function index()
     {
-        $series = Series::paginate(9);
+        $series = Series::paginate(12);
         return view('froend.series.index')->withSeries($series);
     }
 
